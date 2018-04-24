@@ -1,5 +1,6 @@
 class Station():
-    def __init__(self, name, x, y, critical):
+    def __init__(self, name, x, y, critical, connections, time):
+
         self.name = name
         self.x = x
         self.y = y
@@ -13,7 +14,8 @@ class Connection(Station):
             self.critical = critical
 
 class Route():
-    def __init__(self, stations, time, critical_connections):
-        self.stations = stations
+    def __init__(self, location, past_stations, time, critical_connections):
+        self.location = location
+        self.past_stations = past_stations
         self.time = time
         self.critical_connections = critical_connections
