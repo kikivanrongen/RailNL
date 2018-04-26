@@ -11,7 +11,7 @@ def stations(stations_csv):
     with open (stations_csv) as file_stations:
 
         # read csv file and return list of columns
-        read_stations = csv.DictReader(file_stations)
+        read_stations = csv.reader(file_stations)
 
         # iterate over rows and append to list
         for row in read_stations:

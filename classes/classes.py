@@ -1,10 +1,34 @@
-class Station():
-    def __init__(self, name, x, y, critical):
+import csv
 
-        self.name = name
-        self.x = x
-        self.y = y
-        self.critical = critical
+class Stations():
+
+    def __init__(self):
+
+        self.names = []
+        self.x = []
+        self.y = []
+        self.critical = []
+
+    def stations(self, stations_csv):
+        """returns list of all stations with
+        corresponding coordinates"""
+
+        # open csv file with stations
+        with open (stations_csv) as file_stations:
+
+            # read csv file and return list of columns
+            read_stations = csv.DictReader(file_stations)
+
+            # iterate over rows and append to class
+            for row in read_stations:
+                self.names.append(row[0])
+                self.x.append(float(row[1]))
+                self.y.append(float(row[2]))
+
+                if row[3] == 'Kritiek':
+                    self.critical.append(True)
+                else:
+                    self.critical.append(False)
 
 # class Connection(Station):
 #     def __init__(self, connection, time, critical):
