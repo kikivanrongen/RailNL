@@ -1,8 +1,13 @@
-import classes
 import csv
+import classes.classes
+import loading.load
 
-with open("StationsHolland.csv", newline= " ") as csvfile:
-    stations = csv.DictReader(csvfile)
+# import data
+station_list = loading.load.stations("data/StationsHolland.csv")
+connection_list = loading.load.railroads("data/ConnectiesHolland.csv")
 
-with open("ConnectionsHolland.csv", newline = " ") as csvfile:
-    connections = csv.DictReader(csvfile)
+# put data in classes
+for element in station_list:
+    for (k, v) in element.items():
+        print(v)
+        s = classes.classes.Station(name=v[1], x=v[2], y=v[3], critical = v[4])
